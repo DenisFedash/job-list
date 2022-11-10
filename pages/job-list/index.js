@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import JobCard from '../../components/jobCard'
 
 export const getStaticProps = async () => {
   const response = await fetch(
@@ -7,11 +8,11 @@ export const getStaticProps = async () => {
   )
   const data = await response.json()
   return {
-    props: { list: data },
+    props: { jobs: data },
   }
 }
 
-const JobList = ({ list }) => {
+const JobList = ({ jobs }) => {
   return (
     <>
       <Head>
@@ -19,14 +20,15 @@ const JobList = ({ list }) => {
       </Head>
       <h1>Job List</h1>
       <ul>
-        {list &&
-          list.map(({ id, name, email, phone, pictures }) => (
+        {jobs &&
+          jobs.map(({ id, name, email, phone, pictures }) => (
             <li key={id}>
-              <Image src={pictures[0]} alt="logo" width={66} height={66} />
-
-              <h2>{name}</h2>
-              <p>{email}</p>
-              <p>{phone}</p>
+              <JobCard
+                name={name}
+                email={email}
+                phone={phone}
+                pictures={pictures[0]}
+              />
             </li>
           ))}
       </ul>
