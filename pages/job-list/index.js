@@ -21,13 +21,14 @@ const JobList = ({ jobs }) => {
       <h1>Job List</h1>
       <ul>
         {jobs &&
-          jobs.map(({ id, name, email, phone, pictures }) => (
+          jobs.map(({ id, name, address, pictures, createdAt, title }) => (
             <li key={id}>
               <JobCard
+                title={title}
                 name={name}
-                email={email}
-                phone={phone}
-                pictures={pictures[0]}
+                address={address}
+                pictures={pictures}
+                createdAt={createdAt}
               />
             </li>
           ))}
