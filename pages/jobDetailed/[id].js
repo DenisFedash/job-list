@@ -37,7 +37,10 @@ export default function Job({ jobData }) {
       <Head>
         <title>Job Detailed </title>
       </Head>
-      <h1>Job Details</h1>
+      <h1 className="font-bold text-[28px] tracking-[0.413333px]">
+        Job Details
+      </h1>
+      <div className="border-b-2 border-[#3A4562]" />
       <button>Apply Now</button>
       <div>
         <h2>{jobData.title}</h2>
