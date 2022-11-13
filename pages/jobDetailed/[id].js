@@ -37,16 +37,26 @@ export default function Job({ jobData }) {
       <Head>
         <title>Job Detailed </title>
       </Head>
-      <h1 className="font-bold text-[28px] tracking-[0.413333px]">
+      <h1 className="font-bold text-[28px] tracking-[0.413333px] mb-3">
         Job Details
       </h1>
-      <div className="border-b-2 border-[#3A4562]" />
-      <button>Apply Now</button>
-      <div>
-        <h2>{jobData.title}</h2>
-        <p>{jobData.salary}</p>
+      <div className="border-b-2 border-[#3A4562] mb-6" />
+      <div className="flex mb-8 font-normal text-[16px]">
+        <p className="mr-9">Save to my list</p>
+        <p>Share</p>
       </div>
-      <p>Posted {moment(jobData.createdAt).fromNow()}</p>
+      <button className="hidden">Apply Now</button>
+
+      <h2 className="font-bold text-[24px] tracking-[-0.75px]">
+        {jobData.title}
+      </h2>
+      <div className="flex justify-between items-center">
+        <p>Posted {moment(jobData.createdAt).fromNow()}</p>
+        <div className="mb-3">
+          <p>Brutto, per year</p>
+          <p className="text-end">{jobData.salary}</p>
+        </div>
+      </div>
       <h3>Responsopilities</h3>
       <p>{responsopilities}</p>
       <h3>Compensation & Benefits</h3>
