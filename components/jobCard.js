@@ -3,6 +3,8 @@ import Image from 'next/image'
 import moment from 'moment'
 import { useState } from 'react'
 import Link from 'next/link'
+import Location from './map/icons/location'
+import Stars from './map/icons/stars'
 
 export default function JobCard({
   id,
@@ -34,7 +36,7 @@ export default function JobCard({
             </div>
             <div className="w-full">
               <div className="flex justify-between font-light text-sm pt-3 pb-4">
-                <p>Stars</p>
+                <Stars />
                 <p className="textDate pr-4">
                   Posted {moment(createdAt).fromNow()}
                 </p>
@@ -54,15 +56,14 @@ export default function JobCard({
                   </button>
                 </div>
               </div>
-              <p className="font-normal tracking-[0.23619px] text-[14px] text-gray-400">
+              <p className="font-normal tracking-[0.23619px] text-[14px] text-gray-400 pb-2">
                 Department name • {name}
               </p>
 
-              <div className="flex font-normal tracking-[0.23619px] text-[14px] text-gray-400 pb-2 pr-4">
+              <div className="flex items-center font-normal tracking-[0.23619px] text-[14px] text-gray-400 pb-7 pr-4">
+                <Location />
                 <p>{address}</p>
-                <p>{location}</p>
               </div>
-              <div className="pb-7">Vienna</div>
             </div>
           </div>
         </div>
