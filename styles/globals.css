@@ -38,6 +38,16 @@
 
 @layer components {
 
+    .buttonFavorite{
+    fill: white;
+    transition: background 9999999s;
+    }
+
+    .buttonFavorite:active {
+    fill: tomato;
+    transition: background 0s;
+    }
+
     .textDate{
       font-weight: 300;
       font-size: 14px;

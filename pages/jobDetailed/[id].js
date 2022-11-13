@@ -4,6 +4,8 @@ import Map from '../../components/map/map'
 import { GOOGLE_KEY } from '../../utils/APIconfig'
 import moment from 'moment'
 import Image from 'next/image'
+import Favorite from '../../components/Favorite'
+import Share from '../../components/Share'
 
 export const getServerSideProps = async (e) => {
   const { id } = e.query
@@ -20,7 +22,6 @@ export const getServerSideProps = async (e) => {
 }
 
 export default function Job({ jobData }) {
-  console.log(jobData)
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${GOOGLE_KEY}`,
   })
@@ -43,8 +44,14 @@ export default function Job({ jobData }) {
         <h1 className="jobDetails-textTile">Job Details</h1>
         <div className="border-b-2 border-[#3A4562] mb-6" />
         <div className="flex mb-8 font-normal text-[16px] leading-[23px] text-[#38415D]">
-          <p className="mr-9">Save to my list</p>
-          <p>Share</p>
+          <div className=" flex mr-9 items-center">
+            <Favorite />
+            <p>Save to my list</p>
+          </div>
+          <div className="flex items-center">
+            <Share />
+            <p>Share</p>
+          </div>
         </div>
         <button className="hidden">Apply Now</button>
 
@@ -57,7 +64,9 @@ export default function Job({ jobData }) {
           </p>
           <div className="mb-3">
             <p>Brutto, per year</p>
-            <p className="text-end ">{jobData.salary}</p>
+            <p className="text-end ">
+              &euro; {jobData.salary.replaceAll('k', ' 000')}
+            </p>
           </div>
         </div>
         <h3 className="font-bold text-[20px] leading-[25px] tracking-[-0.625px] mb-3">
@@ -90,7 +99,7 @@ export default function Job({ jobData }) {
                 alt={jobData.name}
                 width={209}
                 height={115}
-                className="w-2/6 h-[115px] rounded-lg"
+                className="w-2/6  rounded-lg"
               />
             )
           })}
@@ -126,14 +135,23 @@ export default function Job({ jobData }) {
 
         <h2 className="jobDetails-textTile">Contacts</h2>
         <div className="border-b-2 border-[#3A4562] mb-6" />
-        <div>
-          <p>Department name.</p>
-          <p>{jobData.name}</p>
-          <p>{jobData.phone}</p>
-          <p>{jobData.email}</p>
-        </div>
-        <div>
-          <Map lat={jobData.location.lat} lng={jobData.location.long} />
+        <div className="border rounded-lg bg-[#2A3047]">
+          <div className="pt-[31px] px-[64px]">
+            <div className="font-bold text-[16px] leading-[19px] tracking-[0.23619px] text-[#E7EAF0] mb-[17px]">
+              <p>Department name.</p>
+              <p>{jobData.name}</p>
+            </div>
+            <div className="font-normal text-[16px] leading-[23px] tracking-[-0.5px] text-[#E7EAF0] mb-[6px]">
+              <p>{jobData.address}</p>
+            </div>
+            <div className="font-normal text-[16px] leading-[18px] tracking-[-0.5px] text-gray-400 mb-[17px]">
+              <p>{jobData.phone}</p>
+              <p>{jobData.email}</p>
+            </div>
+          </div>
+          <div className="h-52 w-full text-center">
+            <Map lat={jobData.location.lat} lng={jobData.location.long} />
+          </div>
         </div>
       </div>
     </>
