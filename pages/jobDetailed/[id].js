@@ -20,6 +20,7 @@ export const getServerSideProps = async (e) => {
 }
 
 export default function Job({ jobData }) {
+  console.log(jobData)
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${GOOGLE_KEY}`,
   })
@@ -32,65 +33,108 @@ export default function Job({ jobData }) {
   const compensationBenefits = jobData.description
     .split('Responsopilities:')[1]
     .split('Compensation & Benefits:')[1]
+
   return (
     <>
       <Head>
         <title>Job Detailed </title>
       </Head>
-      <h1 className="font-bold text-[28px] tracking-[0.413333px] mb-3">
-        Job Details
-      </h1>
-      <div className="border-b-2 border-[#3A4562] mb-6" />
-      <div className="flex mb-8 font-normal text-[16px]">
-        <p className="mr-9">Save to my list</p>
-        <p>Share</p>
-      </div>
-      <button className="hidden">Apply Now</button>
-
-      <h2 className="font-bold text-[24px] tracking-[-0.75px]">
-        {jobData.title}
-      </h2>
-      <div className="flex justify-between items-center">
-        <p>Posted {moment(jobData.createdAt).fromNow()}</p>
-        <div className="mb-3">
-          <p>Brutto, per year</p>
-          <p className="text-end">{jobData.salary}</p>
+      <div className="bg-white px-[15px] pt-[24px] pb-[37px]">
+        <h1 className="jobDetails-textTile">Job Details</h1>
+        <div className="border-b-2 border-[#3A4562] mb-6" />
+        <div className="flex mb-8 font-normal text-[16px] leading-[23px] text-[#38415D]">
+          <p className="mr-9">Save to my list</p>
+          <p>Share</p>
         </div>
-      </div>
-      <h3>Responsopilities</h3>
-      <p>{responsopilities}</p>
-      <h3>Compensation & Benefits</h3>
-      <p>{compensationBenefits}</p>
-      <button>Apply Now</button>
-      <div>
-        <h2>Additional Info</h2>
-      </div>
-      <h5>Employment type</h5>
-      {jobData.employment_type.map((item) => {
-        return <div key={item}>{item}</div>
-      })}
-      <div>
-        {jobData.pictures.map((picture, index) => {
-          return (
-            <Image
+        <button className="hidden">Apply Now</button>
+
+        <h2 className="font-bold text-[24px] tracking-[-0.75px] leading-[30px]">
+          {jobData.title}
+        </h2>
+        <div className="flex justify-between items-center">
+          <p className="text-gray-400 text-[13px] leading-[25px] font-light tracking-[0.191905px]">
+            Posted {moment(jobData.createdAt).fromNow()}
+          </p>
+          <div className="mb-3">
+            <p>Brutto, per year</p>
+            <p className="text-end ">{jobData.salary}</p>
+          </div>
+        </div>
+        <h3 className="font-bold text-[20px] leading-[25px] tracking-[-0.625px] mb-3">
+          Responsopilities
+        </h3>
+        <p className="font-normal text-[18px] leading-[24px] tracking-[-0.5625px] mb-10">
+          {responsopilities}
+        </p>
+        <h3 className="font-bold text-[20px] leading-[25px] tracking-[-0.625px] mb-3">
+          Compensation & Benefits
+        </h3>
+        <p className="font-normal text-[18px] leading-[24px] tracking-[-0.5625px] mb-10">
+          {compensationBenefits}
+        </p>
+        <div className="flex justify-center mb-36">
+          <button type="button" className="border rounded-lg bg-[#384564]">
+            <p className="font-semibold text-[12px] leading-[16px] text-white uppercase px-8 py-5">
+              Apply Now
+            </p>
+          </button>
+        </div>
+        <h2 className="jobDetails-textTile">Attached images</h2>
+        <div className="border-b-2 border-[#3A4562] mb-6" />
+        <div className="flex justify-between gap-2 mb-16">
+          {jobData.pictures.map((picture, index) => {
+            return (
+              <Image
+                key={index}
+                src={picture}
+                alt={jobData.name}
+                width={209}
+                height={115}
+                className="w-2/6 h-[115px] rounded-lg"
+              />
+            )
+          })}
+        </div>
+        <h2 className="jobDetails-textTile">Additional Info</h2>
+        <div className="border-b-2 border-[#3A4562] mb-6" />
+
+        <h3 className="mb-[10px]">Employment type</h3>
+        <div className="flex gap-2 pb-6">
+          {jobData.employment_type.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="additionalInfoUnit border rounded-lg bg-[#a1b1db]"
+              >
+                <span className="text-center text-[#55699E]">{item}</span>
+              </div>
+            )
+          })}
+        </div>
+
+        <h3 className="mb-[10px]">Benefits</h3>
+        <div className="flex gap-2 mb-[63px]">
+          {jobData.benefits.map((item, index) => (
+            <div
               key={index}
-              src={picture}
-              alt={jobData.name}
-              width={85}
-              height={85}
-            />
-          )
-        })}
-      </div>
-      <h2>Contacts</h2>
-      <div>
-        <p>Department name.</p>
-        <p>{jobData.name}</p>
-        <p>{jobData.phone}</p>
-        <p>{jobData.email}</p>
-      </div>
-      <div>
-        <Map lat={jobData.location.lat} lng={jobData.location.long} />
+              className="additionalInfoUnit border rounded-lg bg-[#FFCF00]"
+            >
+              <span className="text-center text-[#988B49]"> {item}</span>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="jobDetails-textTile">Contacts</h2>
+        <div className="border-b-2 border-[#3A4562] mb-6" />
+        <div>
+          <p>Department name.</p>
+          <p>{jobData.name}</p>
+          <p>{jobData.phone}</p>
+          <p>{jobData.email}</p>
+        </div>
+        <div>
+          <Map lat={jobData.location.lat} lng={jobData.location.long} />
+        </div>
       </div>
     </>
   )

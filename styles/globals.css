@@ -63,7 +63,7 @@
     }
 
     .jobDetails-textTile {
-        @apply text-[20px] text-darkBlue tracking-[-0.625px] leading-[1.25] font-bold
+        @apply font-bold text-[28px] tracking-[0.413333px] leading-[34px] mb-3
     }
 
     ::marker {
