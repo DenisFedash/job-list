@@ -14,6 +14,7 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ jobs }) {
+  console.log(jobs)
   return (
     <Layout>
       <Head>

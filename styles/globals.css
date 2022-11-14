@@ -38,6 +38,10 @@
 
 @layer components {
 
+    .card__content {
+    width: calc(100% - 85px);
+    }
+
     .buttonFavorite{
     fill: white;
     transition: background 9999999s;
