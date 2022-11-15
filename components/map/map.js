@@ -27,7 +27,7 @@ export default function Map({ lat, lng }) {
       center={center}
       options={defaultOptions}
     >
-      <Marker position={center} icon={{ url: '../locationMarker.svg' }} />
+      <Marker position={center} />
     </GoogleMap>
   )
 }
