@@ -24,13 +24,10 @@ export default function Map({ lat, lng }) {
     <GoogleMap
       mapContainerStyle={{ width: '100%', height: '130%', borderRadius: '8px' }}
       zoom={13}
-      center={{ lat: 48.22140057390992, lng: 16.348647086855475 }}
+      center={center}
       options={defaultOptions}
     >
-      <Marker
-        position={{ lat: 48.22140057390992, lng: 16.348647086855475 }}
-        icon={{ url: '/location.svg' }}
-      />
+      <Marker position={center} icon={{ url: '../locationMarker.svg' }} />
     </GoogleMap>
   )
 }

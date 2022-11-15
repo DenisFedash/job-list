@@ -196,11 +196,11 @@ export default function Job({ jobData }) {
             </div>
           </div>
 
-          <h2 className="lg:hidden jobDetails-textTile border-b-2 border-[#3A4562] pb-2.5 mb-5 font-bold text-[24px] tracking-[-0.75px] leading-[30px] lg:mb-0">
+          <h2 className=" lg:hidden jobDetails-textTile border-b-2 border-[#3A4562] pb-2.5 mb-5 font-bold text-[24px] tracking-[-0.75px] leading-[30px] lg:mb-0">
             Contacts
           </h2>
 
-          <div className="border rounded-lg bg-[#2A3047] w-[402px] h-[436px]">
+          <div className="border rounded-lg bg-[#2A3047]  lg:w-[402px] h-[436px] mx-auto">
             <div className="pt-[31px] px-[64px]">
               <div className="font-bold text-[16px] leading-[19px] tracking-[0.23619px] text-[#E7EAF0] mb-[17px]">
                 <p>Department name.</p>
