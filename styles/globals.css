@@ -66,59 +66,60 @@
     }
     .cardShadow {
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.2);
+        margin: auto;
     }
 
-    .roboto {
-        font-family: 'Roboto', sans-serif;
-    }
-
-    .jobDetails-text {
-        @apply roboto text-[18px] text-darkBlue tracking-[-0.5625px]
-    }
-
-    .jobDetails-textTile {
-        @apply font-bold text-[28px] tracking-[0.413333px] leading-[34px] mb-3
-    }
-
-    ::marker {
-        color: #5c637a;
-        width: 9px;
-        height: 9px;
-    }
-
-    .sectionTitle {
-        @apply text-[28px] leading-[1.21] tracking-[0.413333px] font-bold text-darkBlue
-    }
-
-    .additionalInfoUnit {
-        @apply w-[122px] md:w-[222px] h-[50px] px-3 border rounded-lg flex justify-center items-center
-        font-bold leading-[1] tracking-[-0.457143px]
-    }
-
-    /* .addressInfo {
-        @apply tracking-[-0.5px] leading-[1.43] lg:text-[18px] tracking-[-0.5625px] lg:leading-[1.33]
-    } */
-
-    .postCreatedAt {
-        @apply text-textGray roboto tracking-[-0.5625px] text-[18px] text-textGray pb-2
-    }
-
-    .paginationItem {
-        border-bottom: 2px solid transparent;
-    }
-
-    .paginationItem:active, .paginationItem:hover {
-        color: #55699E;
-        border-bottom: 2px solid #55699E;
-    }
+    .list{
+  background-color: #fff;
+  box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-@layer utilities {
-    .border-\[\#3A4562\] {
-        --tw-border-opacity: 0.13;
-    }
-
-    .text {
-        opacity: 0;
-    }
+.btn {
+  color: #70778b;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  transition: opacity 0.1s linear;
 }
+
+.btn__prev::after,
+.btn__next::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: #dee3ef;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.btn__prev::after {
+  right: -15px;
+}
+
+.btn__next::before {
+  left: -15px;
+}
+
+.active {
+  color: #5876c5;
+  border-bottom: 3px solid #5876c5;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #3a4562;
+  opacity: 0.13;
+}
+
+.job__btn {
+  background-color: #3a4562;
+  color: #fff;
+  transition: background-color 0.1s linear;
+}
+
+    
+}
+
+
