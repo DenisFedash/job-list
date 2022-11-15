@@ -52,7 +52,7 @@ export default function JobCard({
                 Department name • {name}
               </p>
 
-              <div className="flex text-base items-start gap-2 font-normal tracking-[0.23619px] text-[14px] text-gray-400 ">
+              <div className="flex text-base items-center gap-2 font-normal tracking-[0.23619px] text-[14px] text-gray-400 ">
                 <Location />
                 <p>{address}</p>
               </div>
